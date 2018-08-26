@@ -268,9 +268,9 @@ GameObject:
   - component: {fileID: 647771049}
   - component: {fileID: 647771053}
   - component: {fileID: 647771048}
+  - component: {fileID: 647771047}
   - component: {fileID: 647771052}
   - component: {fileID: 647771054}
-  - component: {fileID: 647771047}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -628,8 +628,8 @@ GameObject:
   - component: {fileID: 1858938710}
   - component: {fileID: 1858938712}
   - component: {fileID: 1858938711}
-  - component: {fileID: 1858938713}
   - component: {fileID: 1858938715}
+  - component: {fileID: 1858938713}
   - component: {fileID: 1858938714}
   m_Layer: 0
   m_Name: Bullet Spawn
@@ -692,10 +692,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1858938709}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47ecf4012f5343b2b9a29ee6c9c8194e, type: 3}
+  m_Script: {fileID: 11500000, guid: 345a91954f2ba4779ae83b4fcf75bef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Value: {x: 0, y: 0, z: 0, w: 0}
+  m_SerializedData:
+    Value:
+      value:
+        x: 0
+        y: 0
+        z: 0
+        w: 0
 --- !u!114 &1858938715
 MonoBehaviour:
   m_ObjectHideFlags: 0

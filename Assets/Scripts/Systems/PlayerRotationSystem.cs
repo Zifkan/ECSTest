@@ -19,7 +19,9 @@ namespace Systems
                     var forward = hit.point - entity.Transform.position;
                     var rotation = Quaternion.LookRotation(forward);
 
-                    entity.RotationComponent.Value = new Quaternion(0,rotation.y, 0,rotation.w).normalized;
+                    rotation = new Quaternion(0, rotation.y, 0, rotation.w);
+
+                    entity.RotationComponent.Value = rotation.normalized;
                 }
             }
         }

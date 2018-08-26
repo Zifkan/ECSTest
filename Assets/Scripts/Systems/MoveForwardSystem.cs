@@ -15,31 +15,30 @@ namespace Systems
 
         protected override void OnCreateManager(int capacity)
         {
-           /* _moveForwardGroup = GetComponentGroup(
+            _moveForwardGroup = GetComponentGroup(
                 ComponentType.ReadOnly(typeof(MoveForward)),
                 ComponentType.ReadOnly(typeof(MoveSpeed)),
                 ComponentType.ReadOnly(typeof(Rotation)),
-                typeof(Position));*/
+                typeof(Position));
 
-           // _moveForwardGroup.SetFilterChanged(ComponentType.Create<MoveForward>());
+        //    _moveForwardGroup.SetFilterChanged(ComponentType.Create<MoveForward>());
         }
 
         protected override JobHandle OnUpdate(JobHandle inputDeps)
-        {/*
+        {
             return new MoveForwardRotation
             {
                 positions = _moveForwardGroup.GetComponentDataArray<Position>(),
                 rotations = _moveForwardGroup.GetComponentDataArray<Rotation>(),
                 moveSpeeds = _moveForwardGroup.GetComponentDataArray<MoveSpeed>(),
                 dt = Time.deltaTime
-            }.Schedule(_moveForwardGroup.CalculateLength(), 64, inputDeps);*/
-           return base.OnUpdate(inputDeps);
+            }.Schedule(_moveForwardGroup.CalculateLength(), 64, inputDeps);
         }
 
         //[BurstCompile]
         private struct MoveForwardRotation : IJobParallelFor
         {
-            [ReadOnly] public ComponentDataArray<Position> positions;
+            public ComponentDataArray<Position> positions;
             [ReadOnly] public ComponentDataArray<Rotation> rotations;
             [ReadOnly] public ComponentDataArray<MoveSpeed> moveSpeeds;
             public float dt;

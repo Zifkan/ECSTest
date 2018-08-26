@@ -14,7 +14,7 @@ namespace Systems
             for (int i = 0; i < _data.Length; i++)
             {
                 var rotation = _data.RotationComponents[i].Value;
-               _data.Rigidbodies[i].MoveRotation(rotation);
+               _data.Rigidbodies[i].MoveRotation(rotation.normalized);
             }
         }
 
