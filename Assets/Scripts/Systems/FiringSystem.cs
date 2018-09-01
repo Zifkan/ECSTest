@@ -1,6 +1,8 @@
 ﻿using Components;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
+using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
@@ -13,6 +15,8 @@ namespace Systems
 
         private ComponentGroup _componentGroup;
 
+      //  private static GameObject _prefab;
+
         protected override void OnCreateManager(int capacity)
         {
             _componentGroup = GetComponentGroup(
@@ -21,6 +25,8 @@ namespace Systems
                 ComponentType.Create<Rotation>());
 
             _componentGroup.SetFilterChanged(ComponentType.Create<FiringComponent>());
+
+          
         }
 
         protected override JobHandle OnUpdate(JobHandle inputDeps)
@@ -42,6 +48,7 @@ namespace Systems
             public void Execute(int index)
             {
                 EntityCommandBuffer.CreateEntity();
+                EntityCommandBuffer.AddComponent(new BulletComponent());
                 EntityCommandBuffer.AddSharedComponent(Bootstrap.BulletRenderer);
               //  EntityCommandBuffer.AddComponent(new TransformMatrix());
                 EntityCommandBuffer.AddSharedComponent(new MoveForward());
@@ -51,7 +58,7 @@ namespace Systems
             }
         }
 
-
+   
         private class FiringBarrier: BarrierSystem
         {
             

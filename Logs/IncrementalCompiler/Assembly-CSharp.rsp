@@ -311,7 +311,9 @@
 -d:UNITY_HAS_GOOGLEVR
 -d:UNITY_HAS_TANGO
 -i:F:/TestUnityProjects/TestECS/Assets/Scripts/Bootstrap.cs
+-i:F:/TestUnityProjects/TestECS/Assets/Scripts/Components/BulletComponent.cs
 -i:F:/TestUnityProjects/TestECS/Assets/Scripts/Components/CollisionComponent.cs
+-i:F:/TestUnityProjects/TestECS/Assets/Scripts/Components/DestroyEntityComponent.cs
 -i:F:/TestUnityProjects/TestECS/Assets/Scripts/Components/FiringComponent.cs
 -i:F:/TestUnityProjects/TestECS/Assets/Scripts/Components/InputComponent.cs
 -i:F:/TestUnityProjects/TestECS/Assets/Scripts/Components/MoveForward.cs
@@ -319,6 +321,8 @@
 -i:F:/TestUnityProjects/TestECS/Assets/Scripts/Components/RotationComponent.cs
 -i:F:/TestUnityProjects/TestECS/Assets/Scripts/Components/WeaponComponent.cs
 -i:F:/TestUnityProjects/TestECS/Assets/Scripts/CustomSRP/BasicPipeInstance.cs
+-i:F:/TestUnityProjects/TestECS/Assets/Scripts/Systems/BulletsRayCastsSystem.cs
+-i:F:/TestUnityProjects/TestECS/Assets/Scripts/Systems/CleanUpEntitySystem.cs
 -i:F:/TestUnityProjects/TestECS/Assets/Scripts/Systems/CleanUpFiringSystem.cs
 -i:F:/TestUnityProjects/TestECS/Assets/Scripts/Systems/FiringSystem.cs
 -i:F:/TestUnityProjects/TestECS/Assets/Scripts/Systems/InputSystem.cs

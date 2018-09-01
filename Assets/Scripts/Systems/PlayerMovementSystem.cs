@@ -20,7 +20,6 @@ namespace Systems
             {
                 var moveVector = new Vector3(entity.InputComponent.Horizontal, 0, entity.InputComponent.Vertical);
                 var movePosition = entity.Rigidbody.position + moveVector.normalized * 3 * deltaTime;
-
                 entity.Rigidbody.MovePosition(movePosition);
             }
         }

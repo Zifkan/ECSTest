@@ -45,9 +45,11 @@ namespace Systems
 
             public void Execute(int i)
             {
+
+                var pos = positions[i].Value + dt * moveSpeeds[i].Speed * math.forward(rotations[i].Value);
                 positions[i] = new Position
                 {
-                    Value = positions[i].Value + (dt * moveSpeeds[i].Speed * math.forward(rotations[i].Value))
+                    Value = pos
                 };
             }
         }
