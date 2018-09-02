@@ -34,7 +34,7 @@ namespace Systems
             var raycastCommands = new NativeArray<RaycastCommand>(_bulletsGroup.CalculateLength(), Allocator.TempJob);
             var raycastHits = new NativeArray<RaycastHit>(_bulletsGroup.CalculateLength(), Allocator.TempJob);
 
-            var setupRaycastsJob = new PrepareRaycastCommands()
+            var setupRaycastsJob = new RaycastHitCommands()
             {
                 Positions = positions,
                 Directions = rotations,
@@ -45,16 +45,19 @@ namespace Systems
 
             var deps = RaycastCommand.ScheduleBatch(raycastCommands, raycastHits, 32, setupDependency);
 
+            deps.Complete();
+
             var transferJob = new TransferJob
             {
                 EntityCommandBuffer = _bulletRayBarrier.CreateCommandBuffer(),
                 Entities = _bulletsGroup.GetEntityArray(),
                 RaycastCommands = raycastCommands,
                 RaycastHits = raycastHits,
-
             };
-            
-            return transferJob.Schedule(_bulletsGroup.CalculateLength(), 64, deps);
+
+            inputDeps = transferJob.Schedule(_bulletsGroup.CalculateLength(), 64, deps);
+
+            return inputDeps;
         }
 
         struct TransferJob : IJobParallelFor
@@ -81,7 +84,7 @@ namespace Systems
             }
         }
 
-        struct PrepareRaycastCommands : IJobParallelFor
+        struct RaycastHitCommands : IJobParallelFor
         {
             public NativeArray<RaycastCommand> Raycasts;
             [ReadOnly]

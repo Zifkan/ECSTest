@@ -36,7 +36,7 @@ namespace Systems
                 EntityCommandBuffer = _firingBarrier.CreateCommandBuffer(),
                 Rotation = _componentGroup.GetComponentDataArray<Rotation>(),
                 Positions = _componentGroup.GetComponentDataArray<Position>(),
-
+                CurrentTime = Time.time
             }.Schedule(_componentGroup.CalculateLength(), 64, inputDeps);
         }
 
@@ -45,16 +45,23 @@ namespace Systems
             public EntityCommandBuffer.Concurrent EntityCommandBuffer;
             public ComponentDataArray<Position> Positions;
             public ComponentDataArray<Rotation> Rotation;
+            [ReadOnly]
+            public float CurrentTime;
+
             public void Execute(int index)
             {
                 EntityCommandBuffer.CreateEntity();
                 EntityCommandBuffer.AddComponent(new BulletComponent());
                 EntityCommandBuffer.AddSharedComponent(Bootstrap.BulletRenderer);
-              //  EntityCommandBuffer.AddComponent(new TransformMatrix());
                 EntityCommandBuffer.AddSharedComponent(new MoveForward());
-                EntityCommandBuffer.AddComponent(new MoveSpeed{Speed = 6f});
+                EntityCommandBuffer.AddComponent(new MoveSpeed{Speed = 20f});
                 EntityCommandBuffer.AddComponent(Positions[index]);
                 EntityCommandBuffer.AddComponent(Rotation[index]);
+                EntityCommandBuffer.AddComponent(new EntityLife
+                {
+                    LifeTime = 2,
+                    CreatedTime = CurrentTime
+                });
             }
         }
 
