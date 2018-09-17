@@ -2,7 +2,7 @@
 
 namespace Components
 {
-    public struct MoveForward : ISharedComponentData
+    public struct MoveForward : IComponentData
     {
         
     }

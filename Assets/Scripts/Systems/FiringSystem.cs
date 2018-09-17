@@ -25,8 +25,6 @@ namespace Systems
                 ComponentType.Create<Rotation>());
 
             _componentGroup.SetFilterChanged(ComponentType.Create<FiringComponent>());
-
-          
         }
 
         protected override JobHandle OnUpdate(JobHandle inputDeps)
@@ -53,7 +51,7 @@ namespace Systems
                 EntityCommandBuffer.CreateEntity();
                 EntityCommandBuffer.AddComponent(new BulletComponent());
                 EntityCommandBuffer.AddSharedComponent(Bootstrap.BulletRenderer);
-                EntityCommandBuffer.AddSharedComponent(new MoveForward());
+                EntityCommandBuffer.AddComponent(new MoveForward());
                 EntityCommandBuffer.AddComponent(new MoveSpeed{Speed = 20f});
                 EntityCommandBuffer.AddComponent(Positions[index]);
                 EntityCommandBuffer.AddComponent(Rotation[index]);

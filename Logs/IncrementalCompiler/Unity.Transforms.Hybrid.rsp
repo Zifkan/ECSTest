@@ -311,7 +311,6 @@
 -d:ENABLE_BURST_AOT
 -d:UNITY_TEAM_LICENSE
 -d:ENABLE_VSTU
--d:UNITY_PRO_LICENSE
 -d:UNITY_HAS_GOOGLEVR
 -d:UNITY_HAS_TANGO
 -i:C:/Users/ZifkA/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.entities@0.0.12-preview.11/Unity.Transforms.Hybrid/CopyInitialTransformFromGameObjectComponent.cs

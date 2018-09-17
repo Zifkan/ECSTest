@@ -308,7 +308,6 @@
 -d:ENABLE_BURST_AOT
 -d:UNITY_TEAM_LICENSE
 -d:ENABLE_VSTU
--d:UNITY_PRO_LICENSE
 -d:UNITY_HAS_GOOGLEVR
 -d:UNITY_HAS_TANGO
 -i:C:/Users/ZifkA/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.burst@0.2.4-preview.25/Editor/BurstAotCompiler.cs

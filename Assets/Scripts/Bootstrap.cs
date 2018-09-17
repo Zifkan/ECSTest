@@ -11,5 +11,6 @@ public class Bootstrap : MonoBehaviour
     private void Awake()
     {
         BulletRenderer = _bulletRenderer;
+        
     }
 }

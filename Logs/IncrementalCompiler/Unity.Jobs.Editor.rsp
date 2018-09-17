@@ -308,7 +308,6 @@
 -d:ENABLE_BURST_AOT
 -d:UNITY_TEAM_LICENSE
 -d:ENABLE_VSTU
--d:UNITY_PRO_LICENSE
 -d:UNITY_HAS_GOOGLEVR
 -d:UNITY_HAS_TANGO
 -i:C:/Users/ZifkA/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.jobs@0.0.7-preview.3/Editor/JobsMenu.cs
