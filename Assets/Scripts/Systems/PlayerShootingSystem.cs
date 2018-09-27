@@ -36,11 +36,14 @@ namespace Systems
             public SubtractiveComponent<FiringComponent> Firings;
         }
 
+        
         private struct PlayerShootingJob : IJobParallelFor
         {
             [ReadOnly]
             public EntityArray EntityArray;
-            public EntityCommandBuffer.Concurrent EntityCommandBuffer;
+
+            [ReadOnly]
+            public EntityCommandBuffer EntityCommandBuffer;
             public float CurrentTime;
 
             public void Execute(int index)

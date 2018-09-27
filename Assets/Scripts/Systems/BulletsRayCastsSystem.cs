@@ -16,7 +16,7 @@ namespace Systems
         [Inject]
         private BulletRayBarrier _bulletRayBarrier;
 
-        protected override void OnCreateManager(int capacity)
+        protected override void OnCreateManager()
         {
             _bulletsGroup = GetComponentGroup(typeof(BulletComponent),typeof(Position),
                typeof(Rotation),ComponentType.Subtractive(typeof(DestroyEntityComponent)));
@@ -62,7 +62,8 @@ namespace Systems
 
         struct TransferJob : IJobParallelFor
         {
-            public EntityCommandBuffer.Concurrent EntityCommandBuffer;
+            [ReadOnly]
+            public EntityCommandBuffer EntityCommandBuffer;
 
             [ReadOnly]
             public EntityArray Entities;

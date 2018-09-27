@@ -13,7 +13,7 @@ namespace Systems
     {
         private ComponentGroup _moveForwardGroup;
 
-        protected override void OnCreateManager(int capacity)
+        protected override void OnCreateManager()
         {
             _moveForwardGroup = GetComponentGroup(
                 ComponentType.ReadOnly(typeof(MoveForward)),

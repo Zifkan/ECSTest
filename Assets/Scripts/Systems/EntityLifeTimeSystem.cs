@@ -13,7 +13,7 @@ namespace Systems
         [Inject]
         private EntityLifeTimeBarrier _lifeTimeBarrier;
 
-        protected override void OnCreateManager(int capacity)
+        protected override void OnCreateManager()
         {
             _entityGroup = GetComponentGroup(typeof(EntityLife),ComponentType.Subtractive(typeof(DestroyEntityComponent)));
         }
@@ -33,7 +33,8 @@ namespace Systems
             [ReadOnly]
             public EntityArray EntityArray;
 
-            public EntityCommandBuffer.Concurrent CommandBuffer;
+            [ReadOnly]
+            public EntityCommandBuffer CommandBuffer;
 
             [ReadOnly]
             public ComponentDataArray<EntityLife> EntityLifeArray;

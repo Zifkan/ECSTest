@@ -24,7 +24,8 @@ namespace Systems
 
         private struct CleanUpEnityJob : IJobParallelFor
         {
-            public EntityCommandBuffer.Concurrent EntityCommandBuffer;
+            [ReadOnly]
+            public EntityCommandBuffer EntityCommandBuffer;
 
             [ReadOnly]
             public EntityArray EntityArray;

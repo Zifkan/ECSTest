@@ -17,7 +17,7 @@ namespace Systems
 
       //  private static GameObject _prefab;
 
-        protected override void OnCreateManager(int capacity)
+        protected override void OnCreateManager()
         {
             _componentGroup = GetComponentGroup(
                 ComponentType.Create<FiringComponent>(),
@@ -40,9 +40,11 @@ namespace Systems
 
         private struct FiringJob : IJobParallelFor
         {
-            public EntityCommandBuffer.Concurrent EntityCommandBuffer;
+            [ReadOnly]
+            public EntityCommandBuffer EntityCommandBuffer;
             public ComponentDataArray<Position> Positions;
             public ComponentDataArray<Rotation> Rotation;
+
             [ReadOnly]
             public float CurrentTime;
 

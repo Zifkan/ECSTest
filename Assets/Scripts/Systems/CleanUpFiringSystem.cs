@@ -26,7 +26,9 @@ namespace Systems
         {
             [ReadOnly]
             public EntityArray Entities;
-            public EntityCommandBuffer.Concurrent EntityCommandBuffer;
+
+            [ReadOnly]
+            public EntityCommandBuffer EntityCommandBuffer;
             public ComponentDataArray<FiringComponent> FiringComponents;
             public float CurrentTime;
 
