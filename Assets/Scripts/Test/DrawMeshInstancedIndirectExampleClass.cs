@@ -5,8 +5,7 @@ namespace Test
     public class DrawMeshInstancedIndirectExampleClass : MonoBehaviour
     {
         public int instanceCount = 100000;
-        public Mesh instanceMesh;
-        public Material instanceMaterial;
+        public SkinnedMeshRenderer _meshRenderer;
         public int subMeshIndex = 0;
 
         private int cachedInstanceCount = -1;
@@ -14,9 +13,17 @@ namespace Test
         private ComputeBuffer positionBuffer;
         private ComputeBuffer argsBuffer;
         private uint[] args = new uint[5] { 0, 0, 0, 0, 0 };
+        private Mesh instanceMesh;
+        private Material instanceMaterial;
 
         void Start()
         {
+            instanceMesh = new Mesh();
+            instanceMaterial = _meshRenderer.material;
+
+
+            CopyMeshData(_meshRenderer.sharedMesh, instanceMesh);
+
             argsBuffer = new ComputeBuffer(1, args.Length * sizeof(uint), ComputeBufferType.IndirectArguments);
             UpdateBuffers();
         }
@@ -55,7 +62,7 @@ namespace Test
             for (int i = 0; i < instanceCount; i++)
             {
                 float angle = Random.Range(0.0f, Mathf.PI * 2.0f);
-                float distance = Random.Range(20.0f, 100.0f);
+                float distance = Random.Range(5.0f, 40.0f);
                 float height = Random.Range(-2.0f, 2.0f);
                 float size = Random.Range(0.05f, 0.25f);
                 positions[i] = new Vector4(Mathf.Sin(angle) * distance, height, Mathf.Cos(angle) * distance, size);
@@ -90,6 +97,18 @@ namespace Test
             if (argsBuffer != null)
                 argsBuffer.Release();
             argsBuffer = null;
+        }
+
+        private void CopyMeshData(Mesh originalMesh, Mesh newMesh)
+        {
+            var vertices = originalMesh.vertices;
+
+            newMesh.vertices = vertices;
+            newMesh.triangles = originalMesh.triangles;
+            newMesh.normals = originalMesh.normals;
+            newMesh.uv = originalMesh.uv;
+            newMesh.tangents = originalMesh.tangents;
+            newMesh.name = originalMesh.name;
         }
     }
 }

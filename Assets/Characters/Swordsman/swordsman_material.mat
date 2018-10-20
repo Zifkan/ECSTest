@@ -4,10 +4,10 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: swordsman_material
-  m_Shader: {fileID: 4800000, guid: 256f9c675dea40d48b56e8daab3e55ca, type: 3}
+  m_Shader: {fileID: 4800000, guid: 82f149c95267a864096d563adc4e38e4, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _EMISSION _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 1
